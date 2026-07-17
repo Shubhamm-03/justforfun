@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakerVerse - Premium Sneakers Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shoe-prints"></i>
+                <span>SneakerVerse</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#featured" class="nav-link">Featured</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-search search-toggle"></i>
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <div class="cart-count">0</div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Modal -->
+    <div class="search-modal">
+        <div class="search-container">
+            <input type="text" placeholder="Search sneakers..." class="search-input">
+            <i class="fas fa-times close-search"></i>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Your Perfect Pair</h1>
+            <p class="hero-subtitle">Premium sneakers from top brands. Limited editions available now.</p>
+            <div class="hero-buttons">
+                <button class="cta-button primary">Shop Now</button>
+                <button class="cta-button secondary">Watch Collection</button>
+            </div>
+        </div>
+        <div class="hero-3d">
+            <div class="sneaker-3d" id="heroSneaker"></div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section id="featured" class="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="featured-grid">
+                <div class="featured-item" data-sneaker="air-jordan">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop" alt="Air Jordan 1">
+                    <div class="featured-overlay">
+                        <h3>Air Jordan 1 Retro</h3>
+                        <span class="price">$189</span>
+                    </div>
+                </div>
+                <div class="featured-item" data-sneaker="yeezy">
+                    <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400&h=400&fit=crop" alt="Yeezy Boost">
+                    <div class="featured-overlay">
+                        <h3>Yeezy Boost 350</h3>
+                        <span class="price">$299</span>
+                    </div>
+                </div>
+                <div class="featured-item" data-sneaker="dunk">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop" alt="Nike Dunk">
+                    <div class="featured-overlay">
+                        <h3>Nike Dunk Low</h3>
+                        <span class="price">$129</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Collection</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="nike">Nike</button>
+                    <button class="filter-btn" data-filter="adidas">Adidas</button>
+                    <button class="filter-btn" data-filter="jordan">Jordan</button>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <i class="fas fa-times close-modal"></i>
+            <div class="modal-product">
+                <div class="modal-images">
+                    <div class="main-image">
+                        <img src="" alt="" id="modalMainImage">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <!-- Thumbnails will be populated -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div class="price" id="modalPrice"></div>
+                    <div class="sizes">
+                        <span class="size-label">Size:</span>
+                        <div class="size-buttons" id="sizeButtons"></div>
+                    </div>
+                    <div class="quantity">
+                        <span>Quantity:</span>
+                        <input type="number" value="1" min="1" id="quantityInput">
+                    </div>
+                    <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart - <span id="modalPriceValue"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <i class="fas fa-times close-cart"></i>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be populated -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total: $<span id="cartTotal">0</span></span>
+                </div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-shoe-prints"></i>
+                        <span>SneakerVerse</span>
+                    </div>
+                    <p>Premium sneakers from top brands. Worldwide shipping available.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="#products">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SneakerVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
